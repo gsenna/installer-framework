@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Csound</Name>
+    <Version>1.0.0</Version>
+    <Title>Csound Installer</Title>
+    <Publisher>Csound</Publisher>
+    <StartMenuDir>Csound</StartMenuDir>
+    <TargetDir>@ApplicationsDir@/Csound6</TargetDir>
+    <RemoteRepositories>
+        <Repository>
+             <Url>https://raw.githubusercontent.com/gsenna/CsoundInstaller/master/CsoundInstall</Url>
+             <Enabled>1</Enabled>
+             <DisplayName>Github Csound</DisplayName>
+        </Repository>
+    </RemoteRepositories>
+</Installer>
