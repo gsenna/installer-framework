@@ -23,9 +23,9 @@ qt_install_dir=/opt
 echo "Installing Qt..."
 cd ${qt_install_dir}
 echo "Downloading Qt files..."
-sudo wget https://github.com/adolby/qt-more-builds/releases/download/5.7/qt-opensource-5.7.0-linux-x86_64.7z
+sudo wget https://github.com/gsenna/installer-framework/releases/download/Qt5.9.1/qt-opensource-5.9.1-linux-x86_64.7z
 echo "Extracting Qt files..."
-sudo 7z x qt-opensource-5.7.0-linux-x86_64.7z &> /dev/null
+sudo 7z x qt-opensource-5.9.1-linux-x86_64.7z &> /dev/null
 
 # Install Qt Installer Framework
 # echo "Installing Qt Installer Framework..."
@@ -34,7 +34,7 @@ sudo 7z x qt-opensource-5.7.0-linux-x86_64.7z &> /dev/null
 
 # Add Qt binaries to path
 echo "Adding Qt binaries to path..."
-PATH=${qt_install_dir}/Qt/5.7/gcc_64/bin/:${PATH}
+PATH=${qt_install_dir}/qtbase/bin/:${PATH}
 
 # Build YourApp
 echo "Building YourApp..."
@@ -131,5 +131,5 @@ ls
 
 echo "Done!"
 
-#exit 0
+exit 0
 
