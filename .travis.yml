@@ -21,8 +21,6 @@ matrix:
           packages:
             - gcc-6
             - g++-6
-            - libxkbcommon-x11-dev
-            - libudev-dev
             - binutils-2.26
 
 script:
