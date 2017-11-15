@@ -53,7 +53,7 @@ make
 # Package YourApp
 echo "Packaging YourApp..."
 ls
-cd ${project_dir}/bin/
+cd ${project_dir}/build/bin/
 ls
 ./binarycreator -v
 
