@@ -45,7 +45,7 @@ cd build
 # directory in the PATH variable
 qmake -v
 
-qmake -config release -spec linux-g++-64
+qmake -config release -spec linux-g++-64 ../
 make
 
 # Build and run your tests here
