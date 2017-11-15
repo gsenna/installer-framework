@@ -40,6 +40,7 @@ PATH=${qt_install_dir}/Qt/5.7/gcc_64/bin/:${PATH}
 echo "Building YourApp..."
 cd ${project_dir}
 mkdir build
+cd build
 # Output qmake version info to make sure we have the right install
 # directory in the PATH variable
 qmake -v
@@ -51,7 +52,10 @@ make
 
 # Package YourApp
 echo "Packaging YourApp..."
-cd ${project_dir}/bin/binarycreator -v
+ls
+cd ${project_dir}/bin/
+ls
+./binarycreator -v
 
 # Remove build directories that you don't want to deploy
 #rm -rf moc
