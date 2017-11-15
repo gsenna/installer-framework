@@ -34,7 +34,7 @@ sudo 7z x qt-opensource-5.9.1-linux-x86_64.7z &> /dev/null
 
 # Add Qt binaries to path
 echo "Adding Qt binaries to path..."
-PATH=${qt_install_dir}/Qt5.9.1/bin/:${PATH}
+PATH=${qt_install_dir}/Qt-5.9.1/bin/:${PATH}
 
 # Build YourApp
 echo "Building YourApp..."
