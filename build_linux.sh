@@ -6,7 +6,7 @@ set -o errexit -o nounset
 echo "Updating platform..."
 
 # Install p7zip for packaging archive for deployment
-sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full libharfbuzz-dev libxkbcommon-dev libdbus-1-dev libwayland-dev
+sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full libharfbuzz-dev libxkbcommon-dev libdbus-1-dev
 
 # Need to install chrpath to set up proper rpaths. This is necessary
 # to allow Qt libraries to be visible to each other. Alternatively,
@@ -23,9 +23,9 @@ qt_install_dir=/opt
 echo "Installing Qt..."
 cd ${qt_install_dir}
 echo "Downloading Qt files..."
-sudo wget https://github.com/gsenna/installer-framework/releases/download/Qt5.9.1/qt-opensource-5.9.1-linux-x86_64.7z
+sudo wget https://github.com/gsenna/installer-framework/releases/download/Qt5.7.0/qt-opensource-5.7.0-linux-x86_64.7z
 echo "Extracting Qt files..."
-sudo 7z x qt-opensource-5.9.1-linux-x86_64.7z &> /dev/null
+sudo 7z x qt-opensource-5.7.0-linux-x86_64.7z &> /dev/null
 
 # Install Qt Installer Framework
 # echo "Installing Qt Installer Framework..."
@@ -34,7 +34,7 @@ sudo 7z x qt-opensource-5.9.1-linux-x86_64.7z &> /dev/null
 
 # Add Qt binaries to path
 echo "Adding Qt binaries to path..."
-PATH=${qt_install_dir}/Qt-5.9.1/bin/:${PATH}
+PATH=${qt_install_dir}/Qt-5.7.0/bin/:${PATH}
 
 # Build YourApp
 echo "Building YourApp..."
