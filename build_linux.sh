@@ -6,7 +6,7 @@ set -o errexit -o nounset
 echo "Updating platform..."
 
 # Install p7zip for packaging archive for deployment
-sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full libharfbuzz0b libxkbcommon0 libdbus-1-3 libwayland-client0 libwayland-cursor0
+sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full libharfbuzz-dev libxkbcommon-dev libdbus-1-dev libwayland-dev
 
 # Need to install chrpath to set up proper rpaths. This is necessary
 # to allow Qt libraries to be visible to each other. Alternatively,
