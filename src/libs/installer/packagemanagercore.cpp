@@ -625,9 +625,11 @@ int PackageManagerCore::downloadNeededArchives(double partProgressSize)
         // collect all archives to be downloaded
         const QStringList toDownload = component->downloadableArchives();
         foreach (const QString &versionFreeString, toDownload) {
+            const QString repoUrl = QString::fromLatin1("https://github.com/") + QString(component->repositoryUrl().toString()).section(QString::fromLatin1("/"),3,4) + QString::fromLatin1("/releases/download/");
             archivesToDownload.push_back(qMakePair(QString::fromLatin1("installer://%1/%2")
                 .arg(component->name(), versionFreeString), QString::fromLatin1("%1/%2/%3")
-                .arg(component->repositoryUrl().toString(), component->name(), versionFreeString)));
+                .arg(repoUrl, versionFreeString.split(QString::fromLatin1("Csound")).first(), versionFreeString)));
+
         }
     }
 

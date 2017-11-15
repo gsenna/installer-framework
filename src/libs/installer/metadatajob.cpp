@@ -519,8 +519,9 @@ MetadataJob::Status MetadataJob::parseUpdatesXml(const QList<FileTaskResult> &re
                         packageHash = c2.at(j).toElement().text();
                 }
 
-                const QString repoUrl = metadata.repository.url().toString();
-                FileTaskItem item(QString::fromLatin1("%1/%2/%3meta.7z").arg(repoUrl, packageName,
+                const QString repoUrl = QString::fromLatin1("https://github.com/") + QString(metadata.repository.url().toString()).section(QString::fromLatin1("/"),3,4) + QString::fromLatin1("/releases/download/");
+
+                FileTaskItem item(QString::fromLatin1("%1/%2/%3meta.7z").arg(repoUrl, packageVersion,
                     packageVersion), metadata.directory + QString::fromLatin1("/%1-%2-meta.7z")
                     .arg(packageName, packageVersion));
 
