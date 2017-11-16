@@ -55,7 +55,7 @@ fi
 #    return 0
 #fi
 
-if ! git push origin master ; then
+if ! git push origin HEAD:master ; then
     echo "failed to push git changes"
     exit 1
 fi
