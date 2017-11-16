@@ -45,17 +45,17 @@ fi
 #    return 1
 #fi
 
-remote=origin
-if [[ $GITHUB_TOKEN ]]; then
-    remote=https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG
-fi
+#remote=origin
+#if [[ $GITHUB_TOKEN ]]; then
+#    remote=https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG
+#fi
 
 #if [[ $TRAVIS_BRANCH != master ]]; then
 #    echo "not pushing updates to branch $TRAVIS_BRANCH"
 #    return 0
 #fi
 
-if ! git push --quiet --follow-tags "$remote" master > /dev/null 2>&1; then
+if ! git push origin master ; then
     echo "failed to push git changes"
     exit 1
 fi
