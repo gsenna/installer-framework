@@ -42,3 +42,8 @@ deploy:
     on:
       tags: true
       condition: $TRAVIS_OS_NAME = linux
+
+
+after_deploy:
+  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x push_commit.sh ; fi
+  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./push_commit.sh ; fi
