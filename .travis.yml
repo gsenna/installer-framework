@@ -22,6 +22,8 @@ matrix:
             - gcc-6
             - g++-6
             - binutils-2.26
+            - libxkbcommon-x11-dev
+            - libudev-dev
 
 script:
   - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 ; fi
