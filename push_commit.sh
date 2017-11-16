@@ -13,8 +13,8 @@ commit_website_files() {
 }
 
 upload_files() {
-  git remote set-url origin git@github.com:gsenna/installer-framework.git > /dev/null 2>&1
-  git push --quiet origin HEAD:master
+  git remote add origin-master https://${GH_TOKEN}@github.com/gsenna/installer-framework.git > /dev/null 2>&1
+  git push --quiet --set-upstream origin-master master
 }
 
 setup_git
