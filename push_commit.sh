@@ -2,7 +2,6 @@
 
 # taken from https://gist.github.com/mitchellkrogza/a296ab5102d7e7142cc3599fca634203
 
-local head_ref branch_ref
 head_ref=$(git rev-parse HEAD)
 if [[ $? -ne 0 || ! $head_ref ]]; then
     echo "failed to get HEAD reference"
@@ -46,18 +45,18 @@ fi
 #    return 1
 #fi
 
-local remote=origin
+remote=origin
 if [[ $GITHUB_TOKEN ]]; then
     remote=https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG
 fi
 
-if [[ $TRAVIS_BRANCH != master ]]; then
-    echo "not pushing updates to branch $TRAVIS_BRANCH"
-    return 0
-fi
+#if [[ $TRAVIS_BRANCH != master ]]; then
+#    echo "not pushing updates to branch $TRAVIS_BRANCH"
+#    return 0
+#fi
 
-if ! git push --quiet --follow-tags "$remote" "$TRAVIS_BRANCH" > /dev/null 2>&1; then
+if ! git push --quiet --follow-tags "$remote" master > /dev/null 2>&1; then
     echo "failed to push git changes"
-    return 1
+    exit 1
 fi
 
