@@ -6,7 +6,7 @@ setup_git() {
 }
 
 commit_website_files() {
-  git checkout master
+  git checkout -b master
   echo "sdfsdfs" > Updates.xml
   git add Updates.xml
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [skip ci]"
