@@ -18,18 +18,18 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-          packages:
-            - gcc-6
-            - g++-6
-            - binutils-2.26
-            - libxkbcommon-x11-dev
-            - libudev-dev
+#          packages:
+#            - gcc-6
+#            - g++-6
+#            - binutils-2.26
+#            - libxkbcommon-x11-dev
+#            - libudev-dev
 
 script:
-  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 ; fi
-  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 100 ; fi
+#  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 ; fi
+#  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 100 ; fi
   - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x push_commit.sh ; fi
-  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then TAG_NAME=${TRAVIS_TAG} CXX="g++-6" CC="gcc-6" ./push_commit ; fi
+  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then TAG_NAME=${TRAVIS_TAG} CXX="g++-6" CC="gcc-6" ./push_commit.sh ; fi
 
 deploy:
   - provider: releases
