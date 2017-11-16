@@ -13,9 +13,9 @@ commit_website_files() {
 }
 
 upload_files() {
-  git remote add upstream-master https://${GH_TOKEN}@github.com/gsenna/installer-framework.git > /dev/null 2>&1
-  git pull upstream-master/master
-  git push --quiet --set-upstream upstream-master master
+  git remote add upstream https://${GH_TOKEN}@github.com/gsenna/installer-framework.git > /dev/null 2>&1
+  git pull upstream master
+  git push --quiet --set-upstream upstream master
 }
 
 setup_git
