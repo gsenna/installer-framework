@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Package>
-    <DisplayName>Interfaces</DisplayName>
-    <Description>Install the Csound Interfaces.</Description>
-    <Version>1.00.0</Version>
-    <ReleaseDate>2017-10-17</ReleaseDate>
-    <Default>true</Default>
-    <SortingPriority>5</SortingPriority>
-</Package>
