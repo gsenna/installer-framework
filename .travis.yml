@@ -34,7 +34,7 @@ deploy:
     api_key:
       secure: ALD1tykTfCMb2tkuzjncNqfcllya40GkKfjKnyUaF0VZazoYNbPmeX07QMPjqyqeW2cCYLiVsnYy21/zK2fhfzO2qrVF/7uBJa8LZh4pwXy67RqbMVT8CAJ1oJoXn5ygdjbx4xwI/4CWYHW0pdxQbaSE15ieB4nTVg+heH91rirsZzluM4TApolWS18JyJP8mVct65nYfSrl3I75rZ5JM2+h7Fy82FYqagweBpYZzSXgC2aL4CNWrDDrVR+DAouoxE2CljVJBl5Rs2YD5mWW+XcHm6OVFTuwL9DENBEsTqq+q3JfhPVP9iP0O3k767JV/RAbe28zj/Z8JojBvEPGEszT8djGk5gPz6frobopADDoyZwsFFnH4WiPSgqq0tdD7E7FRO5flhKaLcZy4XMeiUkLHEu4hUjNl/ujG9XnenUF0/QLc/EJsmRgEqO84BWCN/fH8jdfpabkGQVpXkXms5pzf8o7pALX1FyxuhtQEbxeYohZAiIAzQItK/Jpcmz+2hOcd6SNECU/efAhrCMfMMyjgfbzw6D+TmrRn5LOgBJkq4heH4levA2qNv4U2oyQwhoeQpm+T09YkxlXXtNGRgQS7nKE28l3H4jKlrngb1hb3DoDqMFgl+w++2FxAes2KqJw4k47dza7H91YUewXpM7fcAe1pTd3TpMZXPn4pOY=
     file:
-      - build/Csound_${TRAVIS_TAG}_linux_x86_64_Online_installer
+      - build/bin/Csound_${TRAVIS_TAG}_linux_x86_64_Online_installer
     overwrite: true
     skip_cleanup: true
     on:

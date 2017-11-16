@@ -54,9 +54,7 @@ make
 echo "Packaging YourApp..."
 ls
 cd ${project_dir}/build/bin/
-ls
-./binarycreator -v
-
+./binarycreator -c ../../installer/config/config.xml -p ../../installer/packages/ -t installerbase Csound_${TRAVIS_TAG}_linux_x86_64_Online_installer
 # Remove build directories that you don't want to deploy
 #rm -rf moc
 #rm -rf obj
