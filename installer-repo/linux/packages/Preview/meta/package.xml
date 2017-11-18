@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Preview</DisplayName>
+    <Description>Beta packages for Csound and its Frontends.</Description>
+    <Version>2017.11.17</Version>
+    <ReleaseDate>2017-11-17</ReleaseDate>
+    <SortingPriority>1000</SortingPriority>
+    <Checkable>false</Checkable>
+</Package>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Csound</DisplayName>
+    <Description>The Csound Core package.</Description>
+    <Version>2017.11.17</Version>
+    <ReleaseDate>2017-11-17</ReleaseDate>
+    <Default>true</Default>
+    <SortingPriority>5</SortingPriority>
+    <Checkable>False</Checkable>
+</Package>
