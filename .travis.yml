@@ -20,8 +20,10 @@ matrix:
         sources:
         - ubuntu-toolchain-r-test
 
-before_deploy:
+script:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x build_linux.sh ; fi
+
+before_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_linux.sh ; fi
 
 deploy:
