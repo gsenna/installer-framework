@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#LINUX!
+
 setup_git() {
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis CI"
@@ -7,10 +9,9 @@ setup_git() {
 
 commit_website_files() {
   git clone https://${GH_TOKEN}@github.com/gsenna/installer-framework.git installer-master > /dev/null 2>&1
-  cd installer-master
-  echo "sdfsdfs" > Updates.xml
+  cd installer-master/repo-linux/bin/tmp-repo/
   git add Updates.xml
-  git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [skip ci]"
+  git commit --message "Travis Linux build: $TRAVIS_BUILD_NUMBER [skip ci]"
 }
 
 upload_files() {
