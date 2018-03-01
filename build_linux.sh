@@ -6,7 +6,7 @@ set -o errexit -o nounset
 echo "Updating platform..."
 
 # Install p7zip for packaging archive for deployment
-sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full 
+sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full libxkbcommon-x11-0
 
 # Hold on to current directory
 project_dir=$(pwd)
@@ -25,9 +25,9 @@ mkdir -p ../installer-repo/linux/packages/CsoundMaintenanceTool/data
 cp installerbase_"$CSOUND_TRAVIS_INSTALLERBASE_VERSION".7z ../installer-repo/linux/packages/CsoundMaintenanceTool/data/
 
 # Sed para cambiar los xml
-sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/config/config.xml
-sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/packages/CsoundMaintenanceTool/meta/package.xml
-sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" ../installer-repo/linux/packages/WinXound/meta/package.xml
+sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/config/config.xml
+sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/packages/CsoundMaintenanceTool/meta/package.xml
+sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" ../installer-repo/linux/packages/WinXound/meta/package.xml
 
 # Create Online Installer
 echo "Creating Online Installer..."
