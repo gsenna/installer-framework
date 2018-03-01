@@ -10,7 +10,7 @@ setup_git() {
 commit_website_files() {
   git clone https://${GH_TOKEN}@github.com/gsenna/installer-framework.git installer-master > /dev/null 2>&1
   cd installer-master/
-  cp ../build/Updates.xml .
+  cp ../build/temp-repo/Updates.xml .
   git add Updates.xml
   git commit --message "Travis Linux build: $TRAVIS_BUILD_NUMBER [skip ci]"
 }
