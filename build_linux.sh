@@ -21,7 +21,7 @@ echo "Extracting QtIFW files..."
 # Copy installerbase to the CsoundMaintenanceTool data folder
 echo "Copying installerbase to the CsoundMaintenanceTool data Folder..."
 7z a installerbase_"$CSOUND_TRAVIS_INSTALLERBASE_VERSION".7z installerbase
-cp installerbase.7z ../installer-repo/linux/packages/CsoundMaintenanceTool/data/
+cp installerbase_"$CSOUND_TRAVIS_INSTALLERBASE_VERSION".7z ../installer-repo/linux/packages/CsoundMaintenanceTool/data/
 
 # Sed para cambiar los xml
 sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" installer-repo/linux/config/config.xml
