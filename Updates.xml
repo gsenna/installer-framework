@@ -1,1 +1,74 @@
-sdfsdfs
+<Updates>
+ <ApplicationName>{AnyApplication}</ApplicationName>
+ <ApplicationVersion>1.0.0</ApplicationVersion>
+ <Checksum>true</Checksum>
+ <PackageUpdate>
+  <Name>CsoundCore</Name>
+  <DisplayName>Csound</DisplayName>
+  <Description>The Csound Core package.</Description>
+  <Version>1.0.0</Version>
+  <ReleaseDate>2017-11-17</ReleaseDate>
+  <SortingPriority>5</SortingPriority>
+  <Checkable>False</Checkable>
+  <UpdateFile CompressedSize="0" OS="Any" UncompressedSize="0"/>
+  <SHA1>f511febdc1d62473a308d187311fde67d681e840</SHA1>
+ </PackageUpdate>
+ <PackageUpdate>
+  <Name>CsoundMaintenanceTool</Name>
+  <DisplayName>Csound Maintenance Tool</DisplayName>
+  <Description>Maintenance Tool</Description>
+  <Version>3.0.1@Csound-1.0.0</Version>
+  <ReleaseDate>2017-11-17</ReleaseDate>
+  <Script>installscript.qs</Script>
+  <Essential>true</Essential>
+  <ForcedInstallation>true</ForcedInstallation>
+  <Virtual>true</Virtual>
+  <UpdateFile CompressedSize="8766282" OS="Any" UncompressedSize="29463642"/>
+  <DownloadableArchives>installerbase_3.0.1@Csound-1.0.0.7z</DownloadableArchives>
+  <SHA1>c094badb7aba1064faf46f83e6b446e494ecfef1</SHA1>
+ </PackageUpdate>
+ <PackageUpdate>
+  <Name>Dash1</Name>
+  <DisplayName>-------</DisplayName>
+  <Description>Beta packages for Csound and its Interfaces.</Description>
+  <Version>1.0.0</Version>
+  <ReleaseDate>2017-10-17</ReleaseDate>
+  <SortingPriority>999</SortingPriority>
+  <Checkable>false</Checkable>
+  <UpdateFile CompressedSize="0" OS="Any" UncompressedSize="0"/>
+  <SHA1>799fbe17e0fbaebb1a180f70b8e656ae55ad19e5</SHA1>
+ </PackageUpdate>
+ <PackageUpdate>
+  <Name>Interfaces</Name>
+  <DisplayName>Interfaces</DisplayName>
+  <Description>Install the Csound Interfaces.</Description>
+  <Version>1.0.0</Version>
+  <ReleaseDate>2017-10-17</ReleaseDate>
+  <Default>true</Default>
+  <SortingPriority>5</SortingPriority>
+  <UpdateFile CompressedSize="0" OS="Any" UncompressedSize="0"/>
+  <SHA1>394fa64666e8eb0c904030ca497830f2bc2c9600</SHA1>
+ </PackageUpdate>
+ <PackageUpdate>
+  <Name>Preview</Name>
+  <DisplayName>Preview</DisplayName>
+  <Description>Beta packages for Csound and its Frontends.</Description>
+  <Version>1.0.0</Version>
+  <ReleaseDate>2017-11-17</ReleaseDate>
+  <SortingPriority>1000</SortingPriority>
+  <Checkable>false</Checkable>
+  <UpdateFile CompressedSize="0" OS="Any" UncompressedSize="0"/>
+  <SHA1>cb40638a0e5e612a5d24fa390b4eb6d86bff6a0c</SHA1>
+ </PackageUpdate>
+ <PackageUpdate>
+  <Name>WinXound</Name>
+  <DisplayName>WinXound</DisplayName>
+  <Description>WinXound for Linux by Stefano Bonetti</Description>
+  <Version>3.4.0</Version>
+  <ReleaseDate>2013-07-23</ReleaseDate>
+  <Script>installscript.qs</Script>
+  <UpdateFile CompressedSize="1790531" OS="Any" UncompressedSize="7210421"/>
+  <DownloadableArchives>WinXound3.4.0.7z</DownloadableArchives>
+  <SHA1>b34f4e7d59cfa1330fa3d67cc3f409260c6f526b</SHA1>
+ </PackageUpdate>
+</Updates>
