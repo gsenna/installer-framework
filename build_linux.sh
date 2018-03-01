@@ -25,9 +25,9 @@ mkdir -p ../installer-repo/linux/packages/CsoundMaintenanceTool/data
 cp installerbase_"$CSOUND_TRAVIS_INSTALLERBASE_VERSION".7z ../installer-repo/linux/packages/CsoundMaintenanceTool/data/
 
 # Sed para cambiar los xml
-sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" installer-repo/linux/config/config.xml
-sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" installer-repo/linux/packages/CsoundMaintenanceTool/meta/package.xml
-sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" installer-repo/linux/packages/WinXound/meta/package.xml
+sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/config/config.xml
+sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/packages/CsoundMaintenanceTool/meta/package.xml
+sed "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" ../installer-repo/linux/packages/WinXound/meta/package.xml
 
 # Create Online Installer
 echo "Creating Online Installer..."
