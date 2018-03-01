@@ -37,6 +37,8 @@ echo "Creating Online Installer..."
 
 ./repogen -p ../installer-repo/linux/packages/ temp-repo
 
+mkdir temp-repo/online_installer
+cp Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller temp-repo/online_installer/
 
 echo "Done!"
 
