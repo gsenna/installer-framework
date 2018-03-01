@@ -25,7 +25,7 @@ script:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x build_linux.sh ; fi
 
 before_deploy:
-- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_linux.sh ; fi
+- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_linux.sh && git fetch --tags; fi
 
 deploy:
   provider: releases
