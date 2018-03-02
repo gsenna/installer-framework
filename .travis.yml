@@ -9,7 +9,8 @@ env:
   - secure: Yh6hWqOko61kt+Z86QRoNkuQFh6rM75Zia/l8G/Rho+g2d0/DLJ+OhkJbD4EpjcBh8hCw4sPivnmCkxKouT6ilXmjg8+ghoHOT57a/RX97oZ0qUxj6boC8ogE/mnIGnCbSDft0pxinifw4Awo8Y3xvZ5GuI334pgfhTywJhDY0V1v+IXd6/cdfCbA2w1lLG1jDb+ZRMQYeD5o4Tt56+n1dQlouIqGWVQ0QO6cYSud1ESeofyAY3gG05C3h1g6EzOuP64w4y8/pycTGH7A4ZlOT1tNSd3uPNC6LmtfZJ35q/bsVLJZNRQ/5Ja3p8nQaDjRW2PUsWIG43qvYj0ixr65xQRGoE04Bbp0o55vI02zcsTjp5+QUb1wlXS0bp2IL4943Nw7uByx3fYJbibg/AJJXs6HhtmO0lJRlsxLt+fYbkeoIKr0EKrvYWFgA7ux6gxYkR7vinCPybFczRc8KxLtj0N86m8Ez3WDXlZ9U0LshhPtzOHbqKab9nV7qCLg9mFrgn4fih3jUoSL5pEjqUlbfhGvJahf2dI2VbyrKsP0Ov9r2aBo8snrsRYFNr7PsKMq3oXKwirec92qD4oU1tjo/ShgB0FMn2FdVZtaFSZkNcyUVY+e26kx3uBJ5ZKBo0/GGKHHIZwtVcFUzJJgtX63hVibCZYLYadZUXLBI20DKI=
   - CSOUND_TRAVIS_INSTALLERBASE_VERSION="3.0.1@Csound-1.0.0"
   - CSOUND_TRAVIS_WINXOUND_VERSION="3.5.0"
-  - DEPLOY_TO_GITHUB="true"
+  - DEPLOY_LINUX="true"
+  - DEPLOY_LINUX_DEV="true"
 
 
 matrix:
@@ -25,22 +26,39 @@ script:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x build_linux.sh ; fi
 
 before_deploy:
-- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_linux.sh && git fetch --tags; fi
+- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_linux.sh ; fi
+- git tag -f installer-linux
+- git tag -f installer-linux-dev
+- git remote add gh https://${TRAVIS_REPO_SLUG%/*}:${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
+- git push -f gh installer-linux
+- git push -f gh installer-linux-dev
+- git remote remove gh
 
 deploy:
   provider: releases
   api_key:
     secure: Gyw7v5LLrQqunwMoc/l3zEZCur+wi0bUmODYkumUBuXw+hMi4iV0TWvEtjrjcOObxBUdwiAcl/8S8kOW6GUJCoxP4duNlXN/SZMPepm7ZR13/pPEgTGt3kDuBXcFfKOJHR896UA8tQLTNxjqvyS4g6hNRqC6TCEyT3o1l71f7kGdG8knanEFKsVXTGzVmvoQdtR+FKw0RN7n9DkIiR+/ZQpS+3l64wWv1tV5MyPlvMiTrElKpZPGDWmwkLBYK3lkgshaGcz8Q0niiGdoLTcP/cb1A224TZEa4zfzaXelKwFFa0odBeidmL5HB47Dzox6nTWayy8DvEyzK87eIC6maeVyaLa7IKn4aNdnXEEEU/eCc6u5HUS4ybAWLbso7LkSD9bUkQzaPuVMFa5upt/sFwOZ1BlNchiqGn9hQeKB4DuE8gLZRGbjEYVHv0TBW2zxAjs/RyLFHFkIAVAksWBgn2ehyMeaOTXUVFY2pImIUA0OXaxMzhUKAsnYw/HPR9tiW3uZ/oakWWfzDPRyOjGTcCaEWXEaW4P89pQEW35CXHFfEuu3V1oXUkwezA9SkXPJkBzj3b1BXpUouRmJYvtp7VyO7NIrEpQmp2zFa7k+jPtDv4VSC9r28llVHDcC6UbizFYGi1TXCnQ/rvnEUAcShPoyJbMxAJ4+dWDvY6FYfXk=
   file_glob: true
-  tag_name: "installer-framework"
-  draft: true
+  tag_name: "installer-linux"
   body: Automated release from Travis CI
   file: "build/temp-repo/*/*"
   overwrite: true
   skip_cleanup: true
   on:
-    condition: "$DEPLOY_TO_GITHUB = true"
-    condition: "$TRAVIS_OS_NAME = linux"
+    condition: "$DEPLOY_LINUX = true"
+  provider: releases
+  api_key:
+    secure: Gyw7v5LLrQqunwMoc/l3zEZCur+wi0bUmODYkumUBuXw+hMi4iV0TWvEtjrjcOObxBUdwiAcl/8S8kOW6GUJCoxP4duNlXN/SZMPepm7ZR13/pPEgTGt3kDuBXcFfKOJHR896UA8tQLTNxjqvyS4g6hNRqC6TCEyT3o1l71f7kGdG8knanEFKsVXTGzVmvoQdtR+FKw0RN7n9DkIiR+/ZQpS+3l64wWv1tV5MyPlvMiTrElKpZPGDWmwkLBYK3lkgshaGcz8Q0niiGdoLTcP/cb1A224TZEa4zfzaXelKwFFa0odBeidmL5HB47Dzox6nTWayy8DvEyzK87eIC6maeVyaLa7IKn4aNdnXEEEU/eCc6u5HUS4ybAWLbso7LkSD9bUkQzaPuVMFa5upt/sFwOZ1BlNchiqGn9hQeKB4DuE8gLZRGbjEYVHv0TBW2zxAjs/RyLFHFkIAVAksWBgn2ehyMeaOTXUVFY2pImIUA0OXaxMzhUKAsnYw/HPR9tiW3uZ/oakWWfzDPRyOjGTcCaEWXEaW4P89pQEW35CXHFfEuu3V1oXUkwezA9SkXPJkBzj3b1BXpUouRmJYvtp7VyO7NIrEpQmp2zFa7k+jPtDv4VSC9r28llVHDcC6UbizFYGi1TXCnQ/rvnEUAcShPoyJbMxAJ4+dWDvY6FYfXk=
+  file_glob: true
+  tag_name: "installer-linux-dev"
+  body: Automated release from Travis CI
+  file: "build/temp-repo/*/*"
+  overwrite: true
+  skip_cleanup: true
+  on:
+    condition: "$DEPLOY_LINUX_DEV = true"
+
+
 
 after_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x ./push-back_linux.sh ; fi
