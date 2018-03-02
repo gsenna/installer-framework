@@ -11,7 +11,7 @@
   <SortingPriority>5</SortingPriority>
   <Checkable>False</Checkable>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>4a81db5f9586f216ff4e1bb25bef0a355aea15d8</SHA1>
+  <SHA1>f5475b4fee16ee41e16665b53b63fa8af460ceb0</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>CsoundMaintenanceTool</Name>
@@ -25,7 +25,7 @@
   <Virtual>true</Virtual>
   <UpdateFile UncompressedSize="29463642" OS="Any" CompressedSize="8766282"/>
   <DownloadableArchives>installerbase_3.0.1@Csound-1.0.0.7z</DownloadableArchives>
-  <SHA1>ba81f4b1dc73e5d39a218daf0df9eb9e3403742e</SHA1>
+  <SHA1>85cc5321cf25a8d5b810df7d4f3319f187a64293</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Dash1</Name>
@@ -36,7 +36,7 @@
   <SortingPriority>999</SortingPriority>
   <Checkable>false</Checkable>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>28ff0ee251df3c281f2956bcb13df8f180a41b3b</SHA1>
+  <SHA1>7983bba3bf86b8e8f8ba8efdbcba645e3ec2654b</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Interfaces</Name>
@@ -47,7 +47,7 @@
   <Default>true</Default>
   <SortingPriority>5</SortingPriority>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>5a9a544f57eae5c3fc22bdc97316efb801b944b1</SHA1>
+  <SHA1>725f3d0ce9f6fd062939b08a4adecc4ce633e039</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Preview</Name>
@@ -58,17 +58,17 @@
   <SortingPriority>1000</SortingPriority>
   <Checkable>false</Checkable>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>0aa4b90cd10abfe06bcb7582f3baf787e5c96fd4</SHA1>
+  <SHA1>ac8ae8e68004efb80996bae73f5953a40e5639e5</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>WinXound</Name>
   <DisplayName>WinXound</DisplayName>
   <Description>WinXound for Linux by Stefano Bonetti</Description>
-  <Version>3.4.0</Version>
+  <Version>3.5.0</Version>
   <ReleaseDate>2013-07-23</ReleaseDate>
   <Script>installscript.qs</Script>
   <UpdateFile UncompressedSize="7210421" OS="Any" CompressedSize="1790531"/>
   <DownloadableArchives>WinXound3.4.0.7z</DownloadableArchives>
-  <SHA1>2a80e00f2b2c637e8fc3c90e1aacddd847023104</SHA1>
+  <SHA1>31ba5f0c8d518af3542c7f809ae1b126b0d4a1e5</SHA1>
  </PackageUpdate>
 </Updates>
