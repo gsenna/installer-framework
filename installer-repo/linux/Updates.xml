@@ -11,7 +11,7 @@
   <SortingPriority>5</SortingPriority>
   <Checkable>False</Checkable>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>f5475b4fee16ee41e16665b53b63fa8af460ceb0</SHA1>
+  <SHA1>edb335dac352ae3d701a99b5f3f94da15c49de4f</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>CsoundMaintenanceTool</Name>
@@ -25,7 +25,7 @@
   <Virtual>true</Virtual>
   <UpdateFile UncompressedSize="29463642" OS="Any" CompressedSize="8766282"/>
   <DownloadableArchives>installerbase_3.0.1@Csound-1.0.0.7z</DownloadableArchives>
-  <SHA1>85cc5321cf25a8d5b810df7d4f3319f187a64293</SHA1>
+  <SHA1>2ab478535cb92d94b157a3c59064b6673cae861d</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Dash1</Name>
@@ -36,7 +36,7 @@
   <SortingPriority>999</SortingPriority>
   <Checkable>false</Checkable>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>7983bba3bf86b8e8f8ba8efdbcba645e3ec2654b</SHA1>
+  <SHA1>5e7d3877760e555aea5ae87903a2a43e81308235</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Interfaces</Name>
@@ -47,7 +47,7 @@
   <Default>true</Default>
   <SortingPriority>5</SortingPriority>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>725f3d0ce9f6fd062939b08a4adecc4ce633e039</SHA1>
+  <SHA1>50fda786361aae60e3384d56cfb443ce4f0df0de</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Preview</Name>
@@ -58,7 +58,7 @@
   <SortingPriority>1000</SortingPriority>
   <Checkable>false</Checkable>
   <UpdateFile UncompressedSize="0" OS="Any" CompressedSize="0"/>
-  <SHA1>ac8ae8e68004efb80996bae73f5953a40e5639e5</SHA1>
+  <SHA1>14ef55a9e6e8b4251775bd677708985440a80e53</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>WinXound</Name>
@@ -69,6 +69,6 @@
   <Script>installscript.qs</Script>
   <UpdateFile UncompressedSize="7210421" OS="Any" CompressedSize="1790531"/>
   <DownloadableArchives>WinXound3.4.0.7z</DownloadableArchives>
-  <SHA1>31ba5f0c8d518af3542c7f809ae1b126b0d4a1e5</SHA1>
+  <SHA1>eb45c9ed2b2cff2c1788c1ff5d0ff315777e966b</SHA1>
  </PackageUpdate>
 </Updates>
