@@ -28,10 +28,10 @@ script:
 before_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_linux.sh ; fi
 - git remote add gh https://${TRAVIS_REPO_SLUG%/*}:${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
-- git tag -d installer-linux
+- git push --delete gh installer-linux
+- git push --delete gh installer-linux-dev
 - git tag -f installer-linux
 - git push -f gh installer-linux
-- git tag -d installer-linux-dev
 - git tag -f installer-linux-dev
 - git push -f gh installer-linux-dev
 - git remote remove gh
