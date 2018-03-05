@@ -45,7 +45,7 @@ fi
 
 echo "Listing assets..."
 ONLINE_REPO_ASSETS="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID}/assets)"
-ONLINE_REPO_UPLOAD_URL="$(echo $ONLINE_REPO_ASSETS | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
+ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
 for file in temp-repo/*/*; do
   if echo "${ONLINE_REPO_ASSETS}" | grep -q "\"${file##*/}\""; then
