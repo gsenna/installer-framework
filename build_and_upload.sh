@@ -33,8 +33,7 @@ sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Vers
 
 # Create Online Installer
 echo "Creating Online Installer..."
-mkdir temp-repo/online_installer
-./binarycreator -c ../installer-repo/linux/config/config.xml -p ../installer-repo/linux/packages/ -t temp-repo/online_installer/installerbase Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
+./binarycreator -c ../installer-repo/linux/config/config.xml -p ../installer-repo/linux/packages/ -t installerbase temp-repo/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
 
 echo "Extracting id for the online repo"
 ONLINE_REPO_ID="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/tags/online-repo | sed -n 's/.*"id": \(.*\).*,/\1/p' | sed -n 1p)"
