@@ -22,9 +22,9 @@ matrix:
 
 script:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x build_and_upload.sh ; fi
-
-before_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_and_upload.sh ; fi
+
+#before_deploy:
 
 #deploy:
 #- provider: releases
