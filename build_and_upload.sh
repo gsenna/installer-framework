@@ -38,7 +38,7 @@ echo "Creating Online Installer..."
 echo "Extracting id for the online repo"
 ONLINE_REPO_ID="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/tags/online-repo | sed -n 's/.*"id": \(.*\).*,/\1/p' | sed -n 1p)"
 
-if [[ $ONLINE_REPO_ID != "" ]]; then
+if [[ $ONLINE_REPO_ID == "" ]]; then
   echo "Repository not found! Creating it..."
   curl -s -X POST -H "Content-Type: application/json" "https://api.github.com/repos/gsenna/installer-framework/releases?access_token=${GH_TOKEN}" -d '{"tag_name": "online-repo", "target_commitish": "master", "name": "Online repository", "body": "This is the online repository for this project. This is probably not what you are looking for!", "draft": false, "prerelease": false}'
 fi
