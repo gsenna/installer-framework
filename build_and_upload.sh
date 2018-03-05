@@ -52,7 +52,7 @@ for file in temp-repo/*/*; do
     echo "Uploading assets... "
     curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
   fi
-od
+done
 
 cd temp-repo
 echo "Uploading online installer... "
