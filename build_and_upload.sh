@@ -46,14 +46,13 @@ fi
 echo "Listing assets..."
 ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
-for file in temp-repo/*/*; do
-  ONLINE_REPO_ASSETS="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID}/assets)"
-  FILENAME="${file##*/}"
-  OUTPUT="$(echo ${ONLINE_REPO_ASSETS} | sed -n s/.*\(\/${FILENAME}\"\).*/\1/p)"
-  if [[ "$OUTPUT" == "" ]]; then
+for file in temp-repo/*/*.7z; do
     echo "Uploading assets... "
     curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
-  fi
+done
+for file in temp-repo/*/*.sha1; do
+    echo "Uploading sha1... "
+    curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-sha1" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
 done
 
 cd temp-repo
