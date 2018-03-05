@@ -48,8 +48,7 @@ ONLINE_REPO_ASSETS="$(curl -s https://api.github.com/repos/gsenna/installer-fram
 ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
 for file in temp-repo/*/*; do
-  echo "${ONLINE_REPO_ASSETS}" | grep -q "\"${file##*/}\""
-  if [ $? -ne 0 ]; then
+  if [[ "$(echo ${ONLINE_REPO_ASSETS} | grep -q \"${file##*/}\")" -ne 0 ]] ; then
     echo "Uploading assets... "
     curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
   fi
