@@ -10,8 +10,8 @@
   <ReleaseDate>2017-11-17</ReleaseDate>
   <SortingPriority>5</SortingPriority>
   <Checkable>False</Checkable>
-  <UpdateFile CompressedSize="0" UncompressedSize="0" OS="Any"/>
-  <SHA1>5d807aba8f3904b9b801be62fc95f1b1ebd4a1d9</SHA1>
+  <UpdateFile OS="Any" UncompressedSize="0" CompressedSize="0"/>
+  <SHA1>04c4b71b399c3b5a4ac26304fca113d5689d20b3</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>CsoundMaintenanceTool</Name>
@@ -23,9 +23,9 @@
   <Essential>true</Essential>
   <ForcedInstallation>true</ForcedInstallation>
   <Virtual>true</Virtual>
-  <UpdateFile CompressedSize="8766282" UncompressedSize="29463642" OS="Any"/>
+  <UpdateFile OS="Any" UncompressedSize="29463642" CompressedSize="8766282"/>
   <DownloadableArchives>installerbase_3.0.1@Csound-1.0.0.7z</DownloadableArchives>
-  <SHA1>e67aecb67903276dedfb0e85ee8200eb7b6e1b18</SHA1>
+  <SHA1>4c2d368da233c7c5b22cde56d6375a9e1c5c0be1</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Dash1</Name>
@@ -35,8 +35,8 @@
   <ReleaseDate>2017-10-17</ReleaseDate>
   <SortingPriority>999</SortingPriority>
   <Checkable>false</Checkable>
-  <UpdateFile CompressedSize="0" UncompressedSize="0" OS="Any"/>
-  <SHA1>53f556991b5497dbf14b7e47a1884e83554f0144</SHA1>
+  <UpdateFile OS="Any" UncompressedSize="0" CompressedSize="0"/>
+  <SHA1>7ba04d4c262d22dad95afe3e71cfea1f7db5d82a</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Interfaces</Name>
@@ -46,8 +46,8 @@
   <ReleaseDate>2017-10-17</ReleaseDate>
   <Default>true</Default>
   <SortingPriority>5</SortingPriority>
-  <UpdateFile CompressedSize="0" UncompressedSize="0" OS="Any"/>
-  <SHA1>74786535ac612a08b63c07d38d8c5dacda49544d</SHA1>
+  <UpdateFile OS="Any" UncompressedSize="0" CompressedSize="0"/>
+  <SHA1>e6794e49ef36d257801b014e76556ff21a69e968</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>Preview</Name>
@@ -57,8 +57,8 @@
   <ReleaseDate>2017-11-17</ReleaseDate>
   <SortingPriority>1000</SortingPriority>
   <Checkable>false</Checkable>
-  <UpdateFile CompressedSize="0" UncompressedSize="0" OS="Any"/>
-  <SHA1>13cdce32f090bb0b6a5b5148745be82a937ec0d6</SHA1>
+  <UpdateFile OS="Any" UncompressedSize="0" CompressedSize="0"/>
+  <SHA1>5dc5340435b277f0008c0fc8620edfc16c275e46</SHA1>
  </PackageUpdate>
  <PackageUpdate>
   <Name>WinXound</Name>
@@ -67,8 +67,8 @@
   <Version>3.9.0</Version>
   <ReleaseDate>2013-07-23</ReleaseDate>
   <Script>installscript.qs</Script>
-  <UpdateFile CompressedSize="1790531" UncompressedSize="7210421" OS="Any"/>
+  <UpdateFile OS="Any" UncompressedSize="7210421" CompressedSize="1790531"/>
   <DownloadableArchives>WinXound3.4.0.7z</DownloadableArchives>
-  <SHA1>8a7fd09a9d2a3703aa797bf4007a4861a2e8a816</SHA1>
+  <SHA1>4c9fb8513ec7b02353ea556dbf28601f71a1c6b2</SHA1>
  </PackageUpdate>
 </Updates>
