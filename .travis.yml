@@ -21,5 +21,3 @@ matrix:
 script:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x build_and_upload.sh ; fi
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_and_upload.sh ; fi
-
-
