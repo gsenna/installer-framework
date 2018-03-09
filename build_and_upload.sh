@@ -36,28 +36,30 @@ echo "Creating Online Installer..."
 ./binarycreator -c ../installer-repo/linux/config/config.xml -p ../installer-repo/linux/packages/ -t installerbase temp-repo/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
 
 echo "Extracting id for the online repo"
-ONLINE_REPO_ID="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/tags/online-repo | sed -n 's/.*"id": \(.*\).*,/\1/p' | sed -n 1p)"
+#ONLINE_REPO_ID="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/tags/online-repo | sed -n 's/.*"id": \(.*\).*,/\1/p' | sed -n 1p)"
 
-if [[ $ONLINE_REPO_ID == "" ]]; then
-  echo "Repository not found! Creating it..."
-  curl -s -X POST -H "Content-Type: application/json" "https://api.github.com/repos/gsenna/installer-framework/releases?access_token=${GH_TOKEN}" -d '{"tag_name": "online-repo", "target_commitish": "master", "name": "Online repository", "body": "This is the online repository for this project. This is probably not what you are looking for!", "draft": false, "prerelease": false}'
-fi
+#if [[ $ONLINE_REPO_ID == "" ]]; then
+#  echo "Repository not found! Creating it..."
+#  curl -s -X POST -H "Content-Type: application/json" "https://api.github.com/repos/gsenna/installer-framework/releases?access_token=${GH_TOKEN}" -d '{"tag_name": "online-repo", "target_commitish": "master", "name": "Online repository", "body": "This is the online repository for this project. This is probably not what you are looking for!", "draft": false, "prerelease": false}'
+#fi
 
-echo "Listing assets..."
-ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
+#echo "Listing assets..."
+#ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
-for file in temp-repo/*/*.7z; do
+for file in temp-repo/WinXound/*; do
     echo "Uploading assets... "
-    curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
+ #   curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
+    curl -s -T ${file} -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework_linux_x86_64_WinXound/WinXound/"$CSOUND_TRAVIS_WINXOUND_VERSION"/"${file##*/}"
 done
-for file in temp-repo/*/*.sha1; do
-    echo "Uploading sha1... "
-    curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-sha1" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
-done
+
+#for file in temp-repo/WinXound/*.sha1; do
+#    echo "Uploading sha1... "
+#    curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-sha1" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
+#done
 
 cd temp-repo
-echo "Uploading online installer... "
-curl -s --data-binary @"Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/octet-stream" "$ONLINE_REPO_UPLOAD_URL?name=Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller"
+#echo "Uploading online installer... "
+#curl -s --data-binary @"Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/octet-stream" "$ONLINE_REPO_UPLOAD_URL?name=Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller"
 
 
 echo "Done!"
