@@ -8,9 +8,23 @@ echo "Updating platform..."
 # Install p7zip for packaging archive for deployment
 sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install p7zip-full libxkbcommon-x11-0
 
+
 # Hold on to current directory
 project_dir=$(pwd)
 
+mkdir csound
+cd csound
+sudo -E  apt-get -yq build-dep csound
+sudo -E  apt-get -yq install cmake
+git clone https://github.com/csound/csound.git csound-clone
+mkdir cs6make
+cd cs6make
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt/Csound6 ../csound-clone
+make
+sudo make install
+
+
+cd "$project_dir"
 mkdir build
 cd build
 echo "Downloading QtIFW files..."
@@ -18,10 +32,19 @@ wget https://dl.bintray.com/gsenna/installer-framework/travis_linux/QtIFW/QtIFW_
 echo "Extracting QtIFW files..."
 7z x QtIFW_linux_binaries.7z &> /dev/null
 
-# Copy installerbase to the CsoundMaintenanceTool data folder
-echo "Copying installerbase to the CsoundMaintenanceTool data Folder..."
-mkdir -p ../installer-repo/linux/packages/CsoundMaintenanceTool/data
-7z a  ../installer-repo/linux/packages/CsoundMaintenanceTool/data/installerbase.7z installerbase
+if [[ "${MASTER_OR_PREV}" != "" ]]; then
+  # Copy installerbase to the CsoundMaintenanceTool data folder
+  echo "Copying installerbase to the CsoundMaintenanceTool data Folder..."
+  mkdir -p ../installer-repo/travis_linux/master/packages/CsoundMaintenanceTool/data
+  7z a  ../installer-repo/travis_linux/master/packages/CsoundMaintenanceTool/data/installerbase.7z installerbase
+
+  # Copy Csound6 to the CsoundCore data folder
+  echo "Copying installerbase to the CsoundMaintenanceTool data Folder..."
+  mkdir -p ../installer-repo/travis_linux/master/packages/CsoundCore/data
+  7z a  ../installer-repo/travis_linux/master/packages/CsoundCore/data/CsoundCore.7z /opt/Csound6
+  
+fi
+
 
 # Sed para cambiar los xml
 #sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/config/config.xml
@@ -29,15 +52,16 @@ mkdir -p ../installer-repo/linux/packages/CsoundMaintenanceTool/data
 #sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" ../installer-repo/linux/packages/WinXound/meta/package.xml
 
 # repogen
-./repogen -p ../installer-repo/linux/packages/ master
+./repogen -p ../installer-repo/travis_linux/"${MASTER_OR_PREV}"/packages/ "${MASTER_OR_PREV}" 
 
-# Create Online Installer
-echo "Creating Online Installer..."
-mkdir Installers/
-./binarycreator -c ../installer-repo/linux/config/config.xml -p ../installer-repo/linux/packages/ -t installerbase Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
 
-curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
-
+if [[ "${MASTER_OR_PREV}" != "" ]]; then
+  # Create Online Installer
+  echo "Creating Online Installer..."
+  mkdir Installers/
+  ./binarycreator -c ../installer-repo/travis_linux/master/config/config.xml -p ../installer-repo/travis_linux/master/packages/ -t installerbase Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
+  curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
+fi
 
 #echo "Extracting id for the online repo"
 #ONLINE_REPO_ID="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/tags/online-repo | sed -n 's/.*"id": \(.*\).*,/\1/p' | sed -n 1p)"
@@ -50,10 +74,10 @@ curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna
 #echo "Listing assets..."
 #ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
-curl -s -T master/Updates.xml -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/master/Updates.xml
+curl -s -T "${MASTER_OR_PREV}"/Updates.xml -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/"${MASTER_OR_PREV}"/Updates.xml
 
 
-for file in master/*/*; do
+for file in "${MASTER_OR_PREV}"/*/*; do
     echo "Uploading assets... "
  #   curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
     curl -s -T ${file} -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/"${file}"

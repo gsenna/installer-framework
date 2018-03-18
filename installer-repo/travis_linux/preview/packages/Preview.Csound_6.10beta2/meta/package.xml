@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Csound 6.10 Beta 2</DisplayName>
+    <Description>Install the Csound Core package.</Description>
+    <Version>6.10.0-2-aaaaaa20171018</Version>
+    <ReleaseDate>2017-10-17</ReleaseDate>
+    <Licenses>
+        <License name="LGPL v2" file="license.txt" />
+    </Licenses>
+    <Default>true</Default>
+</Package>
