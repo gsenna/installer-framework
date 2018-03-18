@@ -46,11 +46,10 @@ if [[ "${MASTER_OR_PREV}" != "" ]]; then
 
   # Copy Csound6 to the CsoundCore data folder
   echo "Copying installerbase to the CsoundMaintenanceTool data Folder..."
-  mkdir -p ../installer-repo/travis_linux/master/packages/CsoundCore.Csound_*/data
-  shopt -s dotglob nullglob
-  7z a  ../installer-repo/travis_linux/master/packages/CsoundCore.Csound_*/data/CsoundCore.7z /opt/Csound6/*
-  shopt -u dotglob nullglob
-  
+  mkdir -p ../installer-repo/travis_linux/master/packages/CsoundCore.Csound/data
+  cd /opt/Csound6
+  7z a "$project_dir"/installer-repo/travis_linux/master/packages/CsoundCore.Csound/data/Csound.7z .
+  cd "$project_dir"/build
 fi
 
 
