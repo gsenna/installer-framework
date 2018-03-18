@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>Csound 6.10.0</DisplayName>
+    <DisplayName>Csound</DisplayName>
     <Description>Install the Csound Core package.</Description>
     <Version>6.10.0</Version>
     <ReleaseDate>2018-03-18</ReleaseDate>

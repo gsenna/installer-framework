@@ -2,10 +2,8 @@
 <Package>
     <DisplayName>Csound Core</DisplayName>
     <Description>Install the Csound Core package.</Description>
-    <Version>1.0.0</Version>
+    <Version>1</Version>
     <ReleaseDate>2017-10-17</ReleaseDate>
-    <Licenses>
-        <License name="LGPL v2" file="license.txt" />
-    </Licenses>
     <Default>true</Default>
+    <SortingPriority>2</SortingPriority>
 </Package>

@@ -49,9 +49,9 @@ Component.prototype.onInstallationStarted = function()
 {
     if (component.updateRequested() || component.installationRequested()) {
         if (installer.value("os") == "win")
-            component.installerbaseBinaryPath = "@TargetDir@/tempSDKMaintenanceToolBase.exe";
+            component.installerbaseBinaryPath = "@TargetDir@/tempCsoundMaintenanceToolbase.exe";
         else if (installer.value("os") == "x11" || installer.value("os") == "mac")
-            component.installerbaseBinaryPath = "@TargetDir@/.tempSDKMaintenanceTool";
+            component.installerbaseBinaryPath = "@TargetDir@/.tempCsoundMaintenanceToolbase";
         installer.setInstallerBaseBinary(component.installerbaseBinaryPath);
 
         // update resource file if exists in the archive
@@ -108,7 +108,7 @@ Component.prototype.createOperations = function()
         if (!installer.isOfflineOnly()) {
             component.addOperation( "CreateDesktopEntry",
                                     editionName + "-MaintenanceTool.desktop",
-                                    "Type=Application\nExec=@TargetDir@/MaintenanceTool\nPath=@TargetDir@\nName=" + editionName + " Maintenance Tool\nGenericName=Install or uninstall Qt components.\nIcon=QtIcon\nTerminal=false\nCategories=Development;Qt;"
+                                    "Type=Application\nExec=@TargetDir@/maintenancetool\nPath=@TargetDir@\nName=" + editionName + " Maintenance Tool\nGenericName=Install or uninstall Csound components.\nIcon=QtIcon\nTerminal=false\nCategories=Development;Audio;"
                                    );
         }
     }
