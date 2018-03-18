@@ -50,7 +50,7 @@ curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna
 #echo "Listing assets..."
 #ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
-curl -s -T master/Update.xml -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/master/Update.xml
+curl -s -T master/Updates.xml -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/master/Updates.xml
 
 
 for file in master/*/*; do
