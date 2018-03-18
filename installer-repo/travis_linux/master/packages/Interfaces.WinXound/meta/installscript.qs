@@ -8,5 +8,5 @@ Component.prototype.createOperationsForArchive = function(archive)
     // component.createOperationsForArchive(archive);
 
     // add an extract operation with a modified path
-    component.addOperation("Extract", archive, "../@TargetDir@");
+    component.addOperation("Extract", archive, "@TargetDir@/..");
 }
