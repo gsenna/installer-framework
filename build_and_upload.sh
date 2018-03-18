@@ -14,28 +14,32 @@ project_dir=$(pwd)
 mkdir build
 cd build
 echo "Downloading QtIFW files..."
-wget https://github.com/gsenna/installer-framework/releases/download/QtIFW_linux_binaries/QtIFW_linux_binaries.7z
+wget https://dl.bintray.com/gsenna/installer-framework/travis_linux/QtIFW/:QtIFW_linux_binaries.7z
 echo "Extracting QtIFW files..."
 7z x QtIFW_linux_binaries.7z &> /dev/null
 
 # Copy installerbase to the CsoundMaintenanceTool data folder
 echo "Copying installerbase to the CsoundMaintenanceTool data Folder..."
 mkdir -p ../installer-repo/linux/packages/CsoundMaintenanceTool/data
-7z a  ../installer-repo/linux/packages/CsoundMaintenanceTool/data/installerbase_"$CSOUND_TRAVIS_INSTALLERBASE_VERSION".7z installerbase
+7z a  ../installer-repo/linux/packages/CsoundMaintenanceTool/data/installerbase.7z installerbase
 
 # Sed para cambiar los xml
-sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/config/config.xml
-sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/packages/CsoundMaintenanceTool/meta/package.xml
-sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" ../installer-repo/linux/packages/WinXound/meta/package.xml
+#sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/config/config.xml
+#sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_INSTALLERBASE_VERSION<\/Version>/" ../installer-repo/linux/packages/CsoundMaintenanceTool/meta/package.xml
+#sed -i "s/<Version>.*<\/Version>/<Version>$CSOUND_TRAVIS_WINXOUND_VERSION<\/Version>/" ../installer-repo/linux/packages/WinXound/meta/package.xml
 
 # repogen
-./repogen -p ../installer-repo/linux/packages/ temp-repo
+./repogen -p ../installer-repo/linux/packages/ master
 
 # Create Online Installer
 echo "Creating Online Installer..."
-./binarycreator -c ../installer-repo/linux/config/config.xml -p ../installer-repo/linux/packages/ -t installerbase temp-repo/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
+mkdir Installers/
+./binarycreator -c ../installer-repo/linux/config/config.xml -p ../installer-repo/linux/packages/ -t installerbase Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
 
-echo "Extracting id for the online repo"
+curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller
+
+
+#echo "Extracting id for the online repo"
 #ONLINE_REPO_ID="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/tags/online-repo | sed -n 's/.*"id": \(.*\).*,/\1/p' | sed -n 1p)"
 
 #if [[ $ONLINE_REPO_ID == "" ]]; then
@@ -46,31 +50,35 @@ echo "Extracting id for the online repo"
 #echo "Listing assets..."
 #ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
-for file in temp-repo/WinXound/*; do
+curl -s -T master/Update.xml -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/master/Update.xml
+
+
+for file in master/*/*; do
     echo "Uploading assets... "
  #   curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
-    curl -s -T ${file} -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework_linux_x86_64_WinXound/WinXound/"$CSOUND_TRAVIS_WINXOUND_VERSION"/"${file##*/}"
+    curl -s -T ${file} -ugsenna:${BINTRAY_TOKEN} https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/"${file}"
 done
+
 
 #for file in temp-repo/WinXound/*.sha1; do
 #    echo "Uploading sha1... "
 #    curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-sha1" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
 #done
 
-cd temp-repo
+#cd master
 #echo "Uploading online installer... "
 #curl -s --data-binary @"Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/octet-stream" "$ONLINE_REPO_UPLOAD_URL?name=Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller"
 
 
 echo "Done!"
 
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis CI"
-  git clone https://${GH_TOKEN}@github.com/gsenna/installer-framework.git installer-master > /dev/null 2>&1
-  cd installer-master/installer-repo/linux
-  cp ../../../Updates.xml .
-  git add Updates.xml
-  git commit --message "Travis Linux build: $TRAVIS_BUILD_NUMBER [skip ci]"
-  git push
+#  git config --global user.email "travis@travis-ci.org"
+#  git config --global user.name "Travis CI"
+#  git clone https://${GH_TOKEN}@github.com/gsenna/installer-framework.git installer-master > /dev/null 2>&1
+#  cd installer-master/installer-repo/linux
+#  cp ../../../Updates.xml .
+#  git add Updates.xml
+#  git commit --message "Travis Linux build: $TRAVIS_BUILD_NUMBER [skip ci]"
+#  git push
 
 exit 0
