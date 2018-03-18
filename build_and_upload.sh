@@ -14,7 +14,7 @@ project_dir=$(pwd)
 mkdir build
 cd build
 echo "Downloading QtIFW files..."
-wget https://dl.bintray.com/gsenna/installer-framework/travis_linux/QtIFW/:QtIFW_linux_binaries.7z
+wget https://dl.bintray.com/gsenna/installer-framework/travis_linux/QtIFW/QtIFW_linux_binaries.7z
 echo "Extracting QtIFW files..."
 7z x QtIFW_linux_binaries.7z &> /dev/null
 
