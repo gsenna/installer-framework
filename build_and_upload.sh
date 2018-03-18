@@ -12,6 +12,11 @@ sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes in
 # Hold on to current directory
 project_dir=$(pwd)
 
+MASTER_OR_PREV="preview"
+if [[ "${IS_MASTER}" != "" ]]; then
+   MASTER_OR_PREV="master"
+fi
+
 mkdir csound
 cd csound
 sudo -E  apt-get -yq build-dep csound
