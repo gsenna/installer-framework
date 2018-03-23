@@ -2,7 +2,7 @@
 <Package>
     <DisplayName>Csound</DisplayName>
     <Description>Install the Csound Core package.</Description>
-    <Version>6.10.0</Version>
+    <Version>6.10.1</Version>
     <ReleaseDate>2018-03-18</ReleaseDate>
     <Licenses>
         <License name="LGPL v2" file="license.txt" />
