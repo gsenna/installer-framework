@@ -12,6 +12,7 @@ sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes in
 # Hold on to current directory
 project_dir=$(pwd)
 
+MASTER_OR_PREVIEW=$(git ls-remote origin | sed -n 's-'"$TRAVIS_COMMIT"'.*refs/heads/\(master\|preview\)$-\1-p')
 
 mkdir csound
 cd csound
