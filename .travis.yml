@@ -7,7 +7,7 @@ env:
   global:
   - secure: Yh6hWqOko61kt+Z86QRoNkuQFh6rM75Zia/l8G/Rho+g2d0/DLJ+OhkJbD4EpjcBh8hCw4sPivnmCkxKouT6ilXmjg8+ghoHOT57a/RX97oZ0qUxj6boC8ogE/mnIGnCbSDft0pxinifw4Awo8Y3xvZ5GuI334pgfhTywJhDY0V1v+IXd6/cdfCbA2w1lLG1jDb+ZRMQYeD5o4Tt56+n1dQlouIqGWVQ0QO6cYSud1ESeofyAY3gG05C3h1g6EzOuP64w4y8/pycTGH7A4ZlOT1tNSd3uPNC6LmtfZJ35q/bsVLJZNRQ/5Ja3p8nQaDjRW2PUsWIG43qvYj0ixr65xQRGoE04Bbp0o55vI02zcsTjp5+QUb1wlXS0bp2IL4943Nw7uByx3fYJbibg/AJJXs6HhtmO0lJRlsxLt+fYbkeoIKr0EKrvYWFgA7ux6gxYkR7vinCPybFczRc8KxLtj0N86m8Ez3WDXlZ9U0LshhPtzOHbqKab9nV7qCLg9mFrgn4fih3jUoSL5pEjqUlbfhGvJahf2dI2VbyrKsP0Ov9r2aBo8snrsRYFNr7PsKMq3oXKwirec92qD4oU1tjo/ShgB0FMn2FdVZtaFSZkNcyUVY+e26kx3uBJ5ZKBo0/GGKHHIZwtVcFUzJJgtX63hVibCZYLYadZUXLBI20DKI=
   - secure: hPguzjEhMi9hVQMySxLcjvtYXGoTFTuXCTT04Ab/jtfV2MgtGtCxAoC9UzFCafIhG+1n2YOJmAdc4gFfqI4zY7L/bNL21mmjfMbFkPrdwiQ7eEpfV9C512RRLEdlqFfi+hdkAp59RGfysgTS70Kjlc/Pe46J0TaZFUoykDJDXJU9FqrvDh07aUKL2/6KmL2NrhKpZXWYI2wNiAKiHpyMe7M90zFSnpP5MSnhAbnG6g6YZJE2gYiC/oCZFYnPAG1JJNmZy9XbRSZ0ScZ/v9eRfFK/Vp19D8JE5h/MNbhz6hKuM2rgIkw1R8RenG1JWPwO5lH/UAE/UbbD2f2fRFPBbnaSHIEfpsHeaO4SG/y9lnb415KkpWVFGeJP3HbFboW3s3pOm25ZYhGsSZeun6VQdqBB775yc1Tk+q6ezMwOGiWH16AEhwpEDqUCb87NFk4HGrw5tHEXSnFT4f5eBdyL1tQxLNL14UdTMtx9luABMXdwwbLCMAJ1pJRgS494decGFE+zsVFNFAEyTg1Y7bgeOni5wW4v1FURJbsSYP4q/afQ9sFwS7B7CeW6C2rQ6KMMIIU/q8dYgs0Etb2Au79KjHIz4vgkAOi1HDfiPeOf9npOMPg03E6EM0n9jmfNpF/xfkmykFlZcavSyUVrfHXZ7vop2pUE2dWDAv66Bigb3Hc=
-  - IS_MASTER=$(git ls-remote origin | grep "$TRAVIS_COMMIT\s\+refs/heads/master$")
+  - MASTER_OR_PREVIEW=$(git ls-remote origin | sed -n 's-'"$TRAVIS_COMMIT"'.*refs/heads/\(master\|preview\)$-\1-p')
   
 matrix:
   include:
@@ -18,5 +18,5 @@ matrix:
         sources:
         - ubuntu-toolchain-r-test
 script:
-- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x build_and_upload.sh ; fi
-- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ./build_and_upload.sh ; fi
+- if [[ "${TRAVIS_OS_NAME}" == "linux" && "${TRAVIS_TAG}" != "" ]]; then chmod +x online_repo-linux.sh ; fi
+- if [[ "${TRAVIS_OS_NAME}" == "linux" && "${TRAVIS_TAG}" != "" ]]; then ./online_repo-linux.sh ; fi

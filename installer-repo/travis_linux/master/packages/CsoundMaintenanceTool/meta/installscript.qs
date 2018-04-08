@@ -80,9 +80,7 @@ Component.prototype.createOperations = function()
     // Call the base createOperations and afterwards set some registry settings (unpacking ...)
     component.createOperations();
 
-    var editionName = "Qt";
-    if (!(installer.value("QT_EDITION_NAME") === ""))
-        editionName = installer.value("QT_EDITION_NAME");
+    var editionName = "Csound";
 
     // Create uninstall link only for windows
     if (installer.value("os") == "win")

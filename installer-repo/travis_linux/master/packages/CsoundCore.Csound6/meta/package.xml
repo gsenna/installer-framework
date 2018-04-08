@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>Csound</DisplayName>
-    <Description>Install the Csound Core package.</Description>
+    <DisplayName>Csound 6</DisplayName>
+    <Description>Install the Csound 6 Core package.</Description>
     <Version>6.10.1</Version>
     <ReleaseDate>2018-03-18</ReleaseDate>
     <Licenses>
@@ -9,4 +9,5 @@
     </Licenses>
     <Default>true</Default>
     <SortingPriority>1000</SortingPriority>
+    <Replaces>Preview.Csound6</Replaces>
 </Package>
