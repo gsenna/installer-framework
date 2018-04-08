@@ -16,6 +16,7 @@ matrix:
       apt:
         sources:
         - ubuntu-toolchain-r-test
+
 script:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" && "${TRAVIS_TAG}" != "" ]]; then chmod +x online_repo-linux.sh ; fi
 - if [[ "${TRAVIS_OS_NAME}" == "linux" && "${TRAVIS_TAG}" != "" ]]; then ./online_repo-linux.sh ; fi
