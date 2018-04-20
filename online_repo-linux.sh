@@ -108,7 +108,7 @@ done
 #curl -s --data-binary @"Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/octet-stream" "$ONLINE_REPO_UPLOAD_URL?name=Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller"
 if [[ "${MASTER_OR_PREVIEW}" == "master" ]]; then
     wget https://dl.bintray.com/gsenna/installer-framework/travis_linux/preview/Updates.xml
-    xmlstarlet ed --inplace -d "//parent[PackageUpdate[contains(text(),'Preview.Csound6')]]" Updates.xml
+    xmlstarlet ed --inplace -d "//PackageUpdate[Name[contains(text(),'Preview.Csound6')]]" Updates.xml
     PREVIEW_PACKAGES_LEFT=$(xmlstarlet sel -t -c "count(//PackageUpdate)" Updates.xml)
     if [[ "$PREVIEW_PACKAGES_LEFT" < 3 ]]; then xmlstarlet ed --inplace -d "//PackageUpdate" Updates.xml; fi
     curl -s -T Updates.xml -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/preview/Updates.xml?override=1&publish=1"
