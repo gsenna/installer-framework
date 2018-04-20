@@ -31,7 +31,7 @@ Component.prototype.reactOnChecked = function(key, value)
       }
 
       
-      if (csoundCoreChild.installed && component.installationRequested())
+      if (otherPackage.installed && component.installationRequested())
       {
          var result = QMessageBox["warning"]("test.uninstall", "Installer", "Please uninstall " + otherPackage.displayName + " before trying to install " + component.displayName +  ".<br>", QMessageBox.Ok );
          gui.currentPageWidget().deselectComponent(component.name);

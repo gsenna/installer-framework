@@ -7,6 +7,6 @@
     <Licenses>
         <License name="LGPL v2" file="license.txt" />
     </Licenses>
-    <Default>true</Default>
+    <Default>false</Default>
     <Script>installscript.qs</Script>
 </Package>
