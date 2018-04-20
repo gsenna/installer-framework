@@ -12,5 +12,10 @@
              <Enabled>1</Enabled>
              <DisplayName>CsoundCore stable repo on bintray.com</DisplayName>
         </Repository>
+        <Repository>
+             <Url>https://dl.bintray.com/gsenna/installer-framework/travis_linux/preview/</Url>
+             <Enabled>1</Enabled>
+             <DisplayName>CsoundCore preview repo on bintray.com</DisplayName>
+        </Repository>
     </RemoteRepositories>
 </Installer>

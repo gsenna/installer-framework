@@ -2,12 +2,12 @@
 <Package>
     <DisplayName>Csound 6</DisplayName>
     <Description>Install the Csound 6 Core package.</Description>
-    <Version>6.10.1</Version>
+    <Version>6.11.0</Version>
     <ReleaseDate>2018-03-18</ReleaseDate>
     <Licenses>
         <License name="LGPL v2" file="license.txt" />
     </Licenses>
     <Default>true</Default>
+    <Script>installscript.qs</Script>
     <SortingPriority>1000</SortingPriority>
-    <Replaces>Preview.Csound6</Replaces>
 </Package>
