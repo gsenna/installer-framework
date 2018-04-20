@@ -74,7 +74,7 @@ if [[ "${MASTER_OR_PREVIEW}" == "master" ]]; then
   echo "Creating Online Installer..."
   mkdir Installers/
   ./binarycreator -c ../installer-repo/travis_linux/master/config/config.xml -p ../installer-repo/travis_linux/master/packages/ -t installerbase Installers/Csound_"${TRAVIS_TAG}"_linux_x86_64_OnlineInstaller
-  curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller?override=1"
+  curl -s -T Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/Installers/Csound_${TRAVIS_TAG}_linux_x86_64_OnlineInstaller?override=1&publish=1"
 fi
 
 #echo "Extracting id for the online repo"
@@ -88,13 +88,13 @@ fi
 #echo "Listing assets..."
 #ONLINE_REPO_UPLOAD_URL="$(curl -s https://api.github.com/repos/gsenna/installer-framework/releases/${ONLINE_REPO_ID} | sed -n 's/.*upload_url": "\(.*\){?name,label}",/\1/p')"
 
-curl -s -T "${MASTER_OR_PREVIEW}"/Updates.xml -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/${MASTER_OR_PREVIEW}/Updates.xml?override=1"
+curl -s -T "${MASTER_OR_PREVIEW}"/Updates.xml -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/${MASTER_OR_PREVIEW}/Updates.xml?override=1&publish=1"
 
 
 for file in "${MASTER_OR_PREVIEW}"/*/*; do
     echo "Uploading assets... "
  #   curl -s --data-binary @"$file" -H "Authorization: token $GH_TOKEN" -H "Content-Type: application/x-7z-compressed" "$ONLINE_REPO_UPLOAD_URL?name=${file##*/}"
-    curl -s -T ${file} -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/${file}?override=1"
+    curl -s -T ${file} -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/${file}?override=1&publish=1"
 done
 
 
@@ -109,7 +109,9 @@ done
 if [[ "${MASTER_OR_PREVIEW}" == "master" ]]; then
     wget https://dl.bintray.com/gsenna/installer-framework/travis_linux/preview/Updates.xml
     xmlstarlet ed --inplace -d "//parent[PackageUpdate[contains(text(),'Preview.Csound6')]]" Updates.xml
-    curl -s -T Updates.xml -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/preview/Updates.xml?override=1"
+    PREVIEW_PACKAGES_LEFT=$(xmlstarlet sel -t -c "count(//PackageUpdate)" Updates.xml)
+    if [[ "$PREVIEW_PACKAGES_LEFT" < 3 ]]; then xmlstarlet ed --inplace -d "//PackageUpdate" Updates.xml; fi
+    curl -s -T Updates.xml -ugsenna:${BINTRAY_TOKEN} "https://api.bintray.com/content/gsenna/installer-framework/installer-framework/1/travis_linux/preview/Updates.xml?override=1&publish=1"
 fi
 
 echo "Done!"

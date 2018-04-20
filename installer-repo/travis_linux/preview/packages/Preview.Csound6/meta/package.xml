@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>Csound 6.10 Beta 2</DisplayName>
+    <DisplayName>Csound 6.12 Beta 1</DisplayName>
     <Description>Install the Csound Core package.</Description>
-    <Version>6.10.2-beta1</Version>
-    <ReleaseDate>2017-10-17</ReleaseDate>
+    <Version>6.12.0_20180412</Version>
+    <ReleaseDate>2018-04-12</ReleaseDate>
     <Licenses>
         <License name="LGPL v2" file="license.txt" />
     </Licenses>
     <Default>true</Default>
-    <Replaces>CsoundCore.Csound6</Replaces>
+    <Script>installscript.qs</Script>
 </Package>
